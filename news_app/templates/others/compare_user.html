@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Predict customized laptop price
+{% endblock  %}
+
+{% block lead  %}
+To predict press the button
+{% endblock  %}
+
+{% block main_body  %}
+<form method="POST" action="/compare/result">
+  <label>**사용자 아이디를 입력해주세요.**</label>
+  <input name="confirm" style="margin-bottom:10px" class="form-control" type="text" />
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Size</label>
+    <select name="size" class="form-control" id="exampleFormControlSelect1">
+      {% for size in laptops['size'] %}
+      <option value={{size}}>{{size}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">CPU</label>
+    <select name="cpu" class="form-control" id="exampleFormControlSelect1">
+      {% for cpu in laptops['cpu'] %}
+      <option value={{cpu}}>{{cpu}}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Core</label>
+    <select name="core" class="form-control" id="exampleFormControlSelect1">
+      {% for core in laptops['core'] %}
+      <option value={{core}}>{{core}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">OS</label>
+    <select name="os" class="form-control" id="exampleFormControlSelect1">
+      {% for os in laptops['os'] %}
+      <option value={{os}}>{{os}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Pixel</label>
+    <select name="pixel" class="form-control" id="exampleFormControlSelect1">
+      {% for pixel in laptops['pixel'] %}
+      <option value={{pixel}}>{{pixel}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Display</label>
+    <select name="display" class="form-control" id="exampleFormControlSelect1">
+      {% for display in laptops['display'] %}
+      <option value={{display}}>{{display}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">제조사</label>
+    <select name="company" class="form-control" id="exampleFormControlSelect1">
+      {% for company in laptops['company'] %}
+      <option value={{company}}>{{company}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">CPU 회사</label>
+    <select name="cpu_company" class="form-control" id="exampleFormControlSelect1">
+      {% for cpu_company in laptops['cpu_company'] %}
+      <option value={{cpu_company}}>{{cpu_company}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">RAM</label>
+    <select name="ram" class="form-control" id="exampleFormControlSelect1">
+      {% for ram in laptops['ram'] %}
+      <option value={{ram}}>{{ram}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">SSD</label>
+    <select name="ssd" class="form-control" id="exampleFormControlSelect1">
+      {% for ssd in laptops['ssd'] %}
+      <option value={{ssd}}>{{ssd}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">배터리</label>
+    <select name="battery" class="form-control" id="exampleFormControlSelect1">
+      {% for battery in laptops['battery'] %}
+      <option value={{battery}}>{{battery}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">두께</label>
+    <select name="thickness" class="form-control" id="exampleFormControlSelect1">
+      {% for thickness in laptops['thickness'] %}
+      <option value={{thickness}}>{{thickness}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">무게</label>
+    <select name="weight" class="form-control" id="exampleFormControlSelect1">
+      {% for weight in laptops['weight'] %}
+      <option value={{weight}}>{{weight}}</option> <!--user.id #=> user.name-->
+      {% endfor %}
+    </select>
+  </div>
+  <label>위의 스펙을 가진 노트북을 얼마에 사길 원하시나요?</label>
+  <input name="compare_text" style="margin-bottom:10px" class="form-control" type="text" />
+  <input type="submit" class="btn btn-primary" value="Predict" />
+</form>
+
+{% if prediction %}
+<p>노트북 예측가격 : {{prediction.result}}원<br>
+   사용자 희망가격 : {{prediction.compare_text}}원
+</p>
+{% endif %}
+{% endblock  %}

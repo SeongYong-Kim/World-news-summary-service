@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block title %}
+Users
+{% endblock %}
+
+{% block lead %}
+회원정보 조회 및 회원 탈퇴하는 페이지입니다.
+{% endblock %}
+
+{% block main_body %}
+
+{% if user_list %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Using laptop</th>
+      <th scope="col">Satisfaction</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in user_list %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.user_laptops[0].laptop_id }}</td>
+      <td>{{ user.user_laptops[0].satisfaction }}</td>
+      <td>
+        <a class="btn btn-secondary", href='/api/user/{{ user.id }}'>
+          Withdrawal
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

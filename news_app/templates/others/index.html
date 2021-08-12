@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}
+Understanding the world situation
+{% endblock  %}
+
+{% block lead  %}
+Check Out The World News Comfortably
+{% endblock  %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block main_body  %}
+Welcome!! Sign in please. 
+<form method="POST" action="/api/user">
+    <input name="user_id" style="margin-bottom:10px" class="form-control" type="text" placeholder="Enter user id">
+    <input name="user_password" style="margin-bottom:10px" class="form-control" type="text" placeholder="Enter user password">
+    <!-- <input name="laptop_id" style="margin-bottom:10px" class="form-control" type="text" placeholder="Enter using laptop name">
+    <input name="satisfaction" style="margin-bottom:10px" class="form-control" type="text" placeholder="Enter satisfaction(0~10)"> -->
+    <input type="submit" class="btn btn-primary" value="submit" />
+</form>
+{% endblock  %}

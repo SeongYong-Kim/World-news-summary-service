@@ -1,0 +1,21 @@
+__pycache__/
+
+config.py
+
+# 특정 파일 file.py 제외하기
+#file.py
+ 
+
+# 현재 경로에 있는 file.py 만 제외하기
+# /file.py
+ 
+
+# 특정 폴더 __pycache__ 안의 파일 다 제외하기
+# __pycache__/
+ 
+
+# 특정 경로의 특정 파일 제외하기
+# folder/file.txt
+
+#파일을 추가해도 안된다면 캐시삭제 해보기
+#git rm --cached config.py -r

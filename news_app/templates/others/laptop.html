@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block title %}
+Laptops
+{% endblock %}
+
+{% block lead %}
+모든 노트북 정보를 조회하는 페이지입니다.
+{% endblock %}
+
+{% block main_body %}
+
+{% if laptop_list %}
+<table class="table" align="center">
+  <thead>
+    <tr align="center" valign="center">
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Size</th>
+      <th scope="col">Core</th>
+      <th scope="col">Os</th>
+      <!-- <th scope="col">Pixel</th> -->
+      <!-- <th scope="col">Display</th> -->
+      <th scope="col">Company</th>
+      <!-- <th scope="col">CPU_company</th> -->
+      <th scope="col">Ram</th>
+      <th scope="col">SSD</th>
+      <th scope="col">Battery</th>
+      <th scope="col">Thickness</th>
+      <!-- <th scope="col">Weight</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    {% for laptop in laptop_list %}
+    <tr  align="center" valign="center">
+      <th scope="row">{{ laptop.id }}</th>
+      <td>{{ laptop.price }}</td>
+      <td>{{ laptop.size }}</td>
+      <td>{{ laptop.core }}</td>
+      <td>{{ laptop.os }}</td>
+      <!-- <td>{{ laptop.pixel }}</td> -->
+      <!-- <td>{{ laptop.display }}</td> -->
+      <td>{{ laptop.company }}</td>
+      <!-- <td>{{ laptop.cpu_company }}</td> -->
+      <td>{{ laptop.ram }}</td>
+      <td>{{ laptop.ssd }}</td>
+      <td>{{ laptop.battery }}</td>
+      <td>{{ laptop.thickness }}</td>
+      <!-- <td>{{ laptop.weight }}</td> -->
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

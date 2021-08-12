@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body{
+        background-color:black;
+      }
+
+      .announce{
+          color : white;
+          text-align: center;
+          font-size : large;
+          padding : 30px;
+      }
+      .result{
+          padding-top: 50px;
+          color : white;
+          text-align: center;
+          font-size : 80px;
+          padding-bottom: 30px;
+      }
+      .announce2{
+          color : white;
+          text-align: center;
+          font-size : x-large;
+      }
+      div{
+          position:absolute; 
+          left:25%;
+          border : 1px solid white;
+          height : 300px;
+          width : 1000px;
+      }
+    </style>
+  </head>
+  <body>
+    {% if announce %}
+    <p class='result'></p>
+    <p class='announce2'>{{announce['announce']}}</p>
+    {% endif %}
+
+    {% if announce2 %}
+    <p class='result'></p>
+    <p class='announce2'>{{announce2['announce2']}}</p>
+    {% endif %}
+
+    {% if prediction %}
+    <p class='result'>Result</p>
+    <div>
+        <p class='announce'>노트북 예측가격 : {{prediction.result}}원<br>
+        사용자 희망가격 : {{prediction.compare_text}}원
+        </p>
+        <p class='announce2'>{{alarm['alarm']}}</p>
+    </div>
+    {% endif %}
+  </body>
+</html>
